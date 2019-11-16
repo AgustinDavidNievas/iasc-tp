@@ -6,6 +6,8 @@ defmodule ColaActiva do
   end
 
   def init(:ok) do
+    #GenStage.DemandDispatcher envia el mensaje a un solo consumer (el de mayor demanda)
+    #GenStage.BroadcastDispatcher envisa el mensaje a todos los consumer
     {:producer, {:queue.new, 0}, dispatcher: GenStage.BroadcastDispatcher}
   end
 
@@ -34,15 +36,11 @@ defmodule ColaActiva do
         #Como el producer hace un call, le respondo
         #TODO hacer que no responda y que el producer haga un cast?, me parece que esta mal que espere respuesta...
         GenStage.reply(from, :ok)
+        IO.inspect {self(), :from, from}
         dispatch_events(queue, demand - 1, [event | events])
       {:empty, queue} ->
         {:noreply, Enum.reverse(events), {queue, demand}}
     end
-  end
-
-  #TODO esto tendria que estar en el producer
-  def sync_notify(event, timeout \\ 50000) do
-    GenStage.call(__MODULE__, {:notify, event}, timeout)
   end
 
 end

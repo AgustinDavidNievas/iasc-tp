@@ -1,9 +1,8 @@
-defmodule Iasc_tp.Producer do
+defmodule Producer do
   use GenServer
   #TODO creo que con un GenServer alcanza, pero capaz que tendria que ser un GenSage?
 
   def start_link do
-    #TODO que le mando al init aca?, me parece que se podria ignorar...
     GenServer.start_link(__MODULE__, name: __MODULE__)
   end
 

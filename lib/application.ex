@@ -5,7 +5,7 @@ defmodule Iasc_tp.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      #worker(Iasc_tp.Producer, []),
+      worker(Producer, [], id: 0),
       worker(ColaActiva, []),
       worker(Consumer, [], id: 1),
       worker(Consumer, [], id: 2),
