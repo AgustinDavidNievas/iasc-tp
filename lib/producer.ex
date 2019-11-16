@@ -1,6 +1,6 @@
 defmodule Producer do
   use GenServer
-  #TODO creo que con un GenServer alcanza, pero capaz que tendria que ser un GenSage?
+  #TODO creo que con un GenServer alcanza, pero capaz que tendria que ser un GenStage?
 
   def start_link do
     GenServer.start_link(__MODULE__, name: __MODULE__)

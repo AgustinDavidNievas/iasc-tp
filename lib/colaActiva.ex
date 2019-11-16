@@ -19,6 +19,8 @@ defmodule ColaActiva do
   end
 
   def handle_demand(incoming_demand, {queue, pending_demand}) do
+    IO.inspect {self(), :handle_demand, queue, pending_demand}
+
     dispatch_events(queue, incoming_demand + pending_demand, [])
   end
 
