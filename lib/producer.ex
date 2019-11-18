@@ -19,4 +19,13 @@ defmodule Producer do
   def sync_notify(msj, timeout \\ 5000) do
     GenServer.call(ColaActiva, {:notify, {self(), :calendar.local_time(),msj}}, timeout)
   end
+
+  def crazy_notify(msj, timeout \\ 5000) do
+    mensajes = for _ <- 1..10, do: msj
+
+    for mensaje <- mensajes do
+      GenServer.call(ColaActiva, {:notify, {self(), :calendar.local_time(),mensaje}}, timeout)
+    end
+  end
+
 end
