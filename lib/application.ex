@@ -5,12 +5,9 @@ defmodule Iasc_tp.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(Producer, [], id: 0),
-      worker(ColaActiva, []),
-      worker(Consumer, [], id: 1),
-      worker(Consumer, [], id: 2),
-      worker(Consumer, [], id: 3),
-      worker(Consumer, [], id: 4)
+      ProducerSupervisor,
+      ColaActivaSupervisor,
+      %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
     ]
 
     #El Iasc_tp.Supervisor seria el supervisor de supervisores
