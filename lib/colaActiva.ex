@@ -8,7 +8,7 @@ defmodule ColaActiva do
   def init(:ok) do
     #GenStage.DemandDispatcher envia el mensaje a un solo consumer (el de mayor demanda)
     #GenStage.BroadcastDispatcher envisa el mensaje a todos los consumer
-    {:producer, {:queue.new, 0}, dispatcher: GenStage.BroadcastDispatcher}
+    {:producer, {:queue.new, 0}, dispatcher: GenStage.DemandDispatcher}
   end
 
   def handle_call({:notify, event}, from, {queue, pending_demand}) do
