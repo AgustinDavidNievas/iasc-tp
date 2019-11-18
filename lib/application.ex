@@ -6,7 +6,7 @@ defmodule Iasc_tp.Application do
 
     children = [
       worker(Producer, [], id: 0),
-      worker(ColaActiva, []),
+      supervisor(ColaActivaSupervisor, []),#Pareciera que me ignora el nombre que esta definido en el start_link del sup
       worker(Consumer, [], id: 1),
       worker(Consumer, [], id: 2),
       worker(Consumer, [], id: 3),
