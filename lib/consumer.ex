@@ -1,6 +1,11 @@
 defmodule Consumer do
   use GenStage
 
+  def child_spec(id) do
+    name = Module.concat(__MODULE__, id)
+    %{id: name, start: {__MODULE__, :start_link, [name]}, type: :worker}
+  end
+
   def start_link do
     GenStage.start_link(__MODULE__, :ok)
   end
