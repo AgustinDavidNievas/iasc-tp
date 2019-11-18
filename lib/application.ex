@@ -5,8 +5,8 @@ defmodule Iasc_tp.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      supervisor(ProducerSupervisor, []),
-      supervisor(ColaActivaSupervisor, []),#TODO Pareciera que me ignora el nombre que esta definido en el start_link del sup
+      ProducerSupervisor,
+      ColaActivaSupervisor,
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
     ]
 

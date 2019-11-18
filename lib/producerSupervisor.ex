@@ -12,7 +12,7 @@ defmodule ProducerSupervisor do
   @impl true
   def init(_init_arg) do
     children = [
-      worker(Producer, [], id: 0)
+      worker(Producer, [])
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

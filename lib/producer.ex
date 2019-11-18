@@ -6,7 +6,7 @@ defmodule Producer do
   #para luego enviar los a la cola..
 
   def start_link do
-    GenServer.start_link(__MODULE__, name: __MODULE__)
+    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
   def init(arg) do
