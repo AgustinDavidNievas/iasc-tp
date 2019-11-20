@@ -1,9 +1,5 @@
 defmodule Producer do
   use GenServer
-  #TODO creo que con un GenServer alcanza, pero capaz que tendria que ser un GenStage?
-  #CREO que si se llena la cola, el producer sigue mandando mensajes, estos se pierden,
-  #pero si el producer fuera un GenStage, tambien tendria su propio buffer y los almacenaria ahi
-  #para luego enviar los a la cola..
 
   def start_link do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
