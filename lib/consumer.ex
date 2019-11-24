@@ -15,12 +15,13 @@ defmodule Consumer do
   end
 
   def init(:ok) do
-    {:consumer, :ok, subscribe_to: [ColaActiva]}
+    #como ahora la cola es dinamica no puedo usar "subscribe_to: [ColaActiva]" :(
+    #TODO ver si le puedo pasar el subscribe_to aca en el init...
+    {:consumer, []}
   end
 
   def handle_events(events, _from, state) do
     for event <- events do
-      #Por ahora solo printeo porque no se que mas hacer con esto :P
       :timer.sleep(3000);#TODO parametrizar?, esto esta aca para hacer pruebas con el tiempo de consumo
       IO.inspect {self(), event}
     end
