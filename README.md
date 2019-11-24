@@ -57,17 +57,22 @@ iex --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --e
 Se deben correr los 3 comandos en 3 terminales, en simultaneo, para que la app levante.
 
 
-Para observar:
+### Para observar:
 
 desde otro terminal correr:
 windows:
+```
 iex.bat --cookie cookie
-
+```
 linux
+```
 iex --cookie cookie
+```
 
 En la consola del BEAM escribir:
+```
 :observer.start
+```
 
 Ir a la solapa "nodes" luego a "enable distribution"
 
