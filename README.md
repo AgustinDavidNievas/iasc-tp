@@ -30,22 +30,29 @@ por el nombre del equipo local.
 
 
 
-copiar a mano el contenido de la carpeta:
+Copiar a mano el contenido de la carpeta:
+```
 _build\dev\lib\gen_stage\ebin
+```
 
 dentro de la carpeta:
+```
 _build\dev\lib\iasc_tp\ebin
+```
 
-
-```comandos para windows
+### comandos para windows
+```
 iex.bat --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/a"
 iex.bat --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/b"
 iex.bat --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/c"
+```
 
-```comandos para linux
+### comandos para linux
+```
 iex --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/a"
 iex --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/b"
 iex --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/c"
+```
 
 Se deben correr los 3 comandos en 3 terminales, en simultaneo, para que la app levante.
 
