@@ -23,8 +23,9 @@ be found at [https://hexdocs.pm/iasc_tp](https://hexdocs.pm/iasc_tp).
 ## failover-takeover
 
 dentro de la carpeta config, hacer un search and replace de 
+```
 "REEMPLAZAR-POR-NOMBRE-DEL-HOST-VER-README"
-
+```
 por el nombre del equipo local.
 
 
