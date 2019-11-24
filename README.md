@@ -20,7 +20,6 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/iasc_tp](https://hexdocs.pm/iasc_tp).
 
 
-```
 ## failover-takeover
 
 dentro de la carpeta config, hacer un search and replace de 
