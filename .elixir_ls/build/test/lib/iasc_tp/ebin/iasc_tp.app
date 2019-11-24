@@ -1,0 +1,10 @@
+{application,iasc_tp,
+             [{applications,[kernel,stdlib,elixir,logger,gen_stage]},
+              {description,"iasc_tp"},
+              {modules,['Elixir.ColaActiva','Elixir.ColaActivaSupervisor',
+                        'Elixir.Consumer','Elixir.ConsumerDynamicSupervisor',
+                        'Elixir.IascTp','Elixir.Iasc_tp.Application',
+                        'Elixir.Producer','Elixir.ProducerSupervisor']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {mod,{'Elixir.Iasc_tp.Application',[]}}]}.
