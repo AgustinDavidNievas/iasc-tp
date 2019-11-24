@@ -1,21 +1,24 @@
-defmodule ColaActivaSupervisor do
-  use Supervisor
+defmodule ColaActivaDynamicSupervisor do
+  use DynamicSupervisor
 
   def start_link do
-    Supervisor.start_link(__MODULE__, name: __MODULE__)
+    DynamicSupervisor.start_link(__MODULE__, name: __MODULE__)
   end
 
   def start_link(init_arg) do
-    Supervisor.start_link(__MODULE__, init_arg, name: __MODULE__)
+    DynamicSupervisor.start_link(__MODULE__, init_arg, name: __MODULE__)
   end
 
   @impl true
   def init(_init_arg) do
-    children = [
-      #{ColaActiva, init_arg}
-      worker(ColaActiva, [])
-    ]
-
-    Supervisor.init(children, strategy: :one_for_one)
+    DynamicSupervisor.init(strategy: :one_for_one)
   end
+
+  def start_child(id) do
+    #Ejemplo para agregar una cola:
+    #ColaActivaDynamicSupervisor.start_child(:uno)
+    spec = {ColaActiva, id}
+    DynamicSupervisor.start_child(__MODULE__, spec)
+  end
+
 end
