@@ -21,7 +21,7 @@ defmodule ColaActiva do
 
     queue = :queue.in({from, event}, queue)
 
-    #ColaPasiva.insert({from, event}, pending_demand)
+    ColaPasiva.insert({from, event}, pending_demand)
 
     dispatch_events(queue, pending_demand, [])
   end
