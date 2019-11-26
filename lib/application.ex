@@ -7,7 +7,8 @@ defmodule Iasc_tp.Application do
     children = [
       ProducerSupervisor,
       ColaActivaSupervisor,
-      %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
+      %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} },
+      ColaPasivaSupervisor
     ]
 
     #El Iasc_tp.Supervisor seria el supervisor de supervisores
