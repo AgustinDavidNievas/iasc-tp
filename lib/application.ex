@@ -12,6 +12,8 @@ defmodule Iasc_tp.Application do
 
     children = [
       ProducerSupervisor,
+      RegistroColaSupervisor,
+      RouterSupervisor,
       %{id: ColaActivaDynamicSupervisor, start: {ColaActivaDynamicSupervisor, :start_link, [[]]} },
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
     ]
@@ -19,5 +21,7 @@ defmodule Iasc_tp.Application do
     #El Iasc_tp.Supervisor seria el supervisor de supervisores
     opts = [strategy: :one_for_one, name: Iasc_tp.Supervisor]
     Supervisor.start_link(children, opts)
+    # ConsumerDynamicSupervisor.start_child(:uno)
+    # RegistroCola.start
   end
 end

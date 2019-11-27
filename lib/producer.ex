@@ -14,9 +14,12 @@ defmodule Producer do
     {:reply, :ok, state}
   end
 
-  def sync_notify(colaPid, msj, timeout \\ 5000) do
+  def sync_notify(key, msj, timeout \\ 5000) do
     #TODO sacar colaPid y usar el nombre registrado del Router!!!
-    GenServer.call(colaPid, {:notify, {self(), :calendar.local_time(),msj}}, timeout)
+    content = {self(), msj,  :calendar.local_time()}
+    Router.send_message(key, content, timeout)
+
+    # GenServer.call(colaPid, {:notify, {self(), :calendar.local_time(),msj}}, timeout)
   end
 
   def crazy_notify(colaPid, msj, timeout \\ 5000) do
