@@ -12,11 +12,5 @@ defmodule RegistroCola do
     IO.inspect "Seleccionando cola..."
     Registry.lookup(__MODULE__, key)
   end
-    
-  # Registry.dispatch(
-  #     Registry.RegistroCola, 
-  #     key,
-  #     fn entry -> dispatch_message(entry, data) end
-  # )
 
 end

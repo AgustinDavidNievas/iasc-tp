@@ -5,3 +5,6 @@
 GenStage.sync_subscribe(consumerUnoPid, to: colaUnoPid)
 GenStage.sync_subscribe(consumerUnoPid, to: colaDosPid)
 GenStage.sync_subscribe(consumerDosPid, to: colaUnoPid)
+
+Router.agregar_cola("uno", colaUnoPid)
+Router.agregar_cola("dos", colaDosPid)

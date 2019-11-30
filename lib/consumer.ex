@@ -22,8 +22,7 @@ defmodule Consumer do
 
   def handle_events(events, _from, state) do
     for event <- events do
-      :timer.sleep(3000);#TODO parametrizar?, esto esta aca para hacer pruebas con el tiempo de consumo
-      IO.inspect {self(), event}
+      IO.inspect {"Consumidor: recibi un mensaje", events}
     end
     {:noreply, [], state}
   end

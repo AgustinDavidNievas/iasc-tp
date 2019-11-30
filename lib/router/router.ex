@@ -1,7 +1,7 @@
 defmodule Router do
   use GenServer
 
-  def start_link(opts \\ []) do
+  def start_link(opts) do
     GenServer.start_link(__MODULE__, :ok, opts)
   end
 
@@ -11,13 +11,10 @@ defmodule Router do
 
   def handle_call({:send, key, data}, _from, state) do
     cola = RegistroCola.get_cola(key)
+    IO.inspect {"Router: recibi un msj y lo estoy redireccionando", self()}
     {status} = send_to_queue(cola, data)
 
     {:reply, status, state}
-  end
-
-  def send_message(key, content, timeout) do
-    GenServer.call({:global, GlobalRouter}, {:send, key, content}, timeout)
   end
 
   def agregar_cola(key, cola_id) do
