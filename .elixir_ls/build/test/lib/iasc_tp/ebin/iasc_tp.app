@@ -8,7 +8,9 @@
                         'Elixir.Endpoint','Elixir.EndpointSupervisor',
                         'Elixir.IascTp','Elixir.Iasc_tp.Application',
                         'Elixir.Producer','Elixir.ProducerSupervisor',
-                        'Elixir.Router']},
+                        'Elixir.RegistroCola','Elixir.RegistroColaSupervisor',
+                        'Elixir.Router','Elixir.RouterEndpoint',
+                        'Elixir.RouterSupervisor']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.Iasc_tp.Application',[]}}]}.

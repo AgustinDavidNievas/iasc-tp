@@ -33,7 +33,7 @@ defmodule Endpoint do
     end
   end
 
-  forward("/bot", to: Router)
+  forward("/bot", to: RouterEndpoint)
 
   match _ do
     conn

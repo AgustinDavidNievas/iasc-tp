@@ -1,4 +1,4 @@
-defmodule Router do
+defmodule RouterEndpoint do
   use Plug.Router
 
   plug(:match)
