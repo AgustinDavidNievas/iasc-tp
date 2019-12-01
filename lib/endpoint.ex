@@ -8,7 +8,8 @@ defmodule Endpoint do
 
   require Logger
 
-  plug(Plug.Logger, log: :debug)
+  # INFO: LA siguiente linea loguea el ida y vuelta con el cliente HTTP
+  # plug(Plug.Logger, log: :debug)
   plug(:match)
 
   plug(Plug.Parsers,
