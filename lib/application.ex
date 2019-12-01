@@ -6,12 +6,13 @@ defmodule Iasc_tp.Application do
   #{:ok, consumerDosPid} = ConsumerDynamicSupervisor.start_child(:dos)
   #GenStage.sync_subscribe(consumerUnoPid, to: colaUnoPid)
   #GenStage.sync_subscribe(consumerDosPid, to: colaUnoPid)
-  
+
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
     children = [
       ProducerSupervisor,
+      Endpoint,
       %{id: ColaActivaDynamicSupervisor, start: {ColaActivaDynamicSupervisor, :start_link, [[]]} },
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
     ]
