@@ -1,0 +1,57 @@
+version: '3.5'
+
+networks:
+  iasc_tp:
+      name: iasc
+
+services:
+  elixir_uno:
+    container_name: elixir-uno
+    image: elixir
+    hostname: elixir-uno
+    ports:
+      - "5000:5000"
+    volumes:
+      - elixir-mix:/root/.mix
+      - ./:/app
+    working_dir: /app
+    command: tail -f /dev/null
+    extra_hosts:
+      - repo.hex.pm:151.101.218.2
+    networks:
+      - iasc_tp
+
+  elixir_dos:
+    container_name: elixir-dos
+    image: elixir
+    hostname: elixir-dos
+    ports:
+      - "5001:5000"
+    volumes:
+      - elixir-mix:/root/.mix
+      - ./:/app
+    working_dir: /app
+    command: tail -f /dev/null
+    extra_hosts:
+      - repo.hex.pm:151.101.218.2
+    networks:
+      - iasc_tp
+
+  elixir_tres:
+    container_name: elixir-tres
+    image: elixir
+    hostname: elixir-tres
+    ports:
+      - "5002:5000"
+    volumes:
+      - elixir-mix:/root/.mix
+      - ./:/app
+    working_dir: /app
+    command: tail -f /dev/null
+    extra_hosts:
+      - repo.hex.pm:151.101.218.2
+    networks:
+      - iasc_tp
+
+volumes:
+  elixir-mix: {}
