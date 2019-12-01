@@ -22,6 +22,7 @@ defmodule Consumer do
 
   def handle_events(events, _from, state) do
     for event <- events do
+      :timer.sleep(3000);
       IO.inspect {"Consumidor: recibi un mensaje", events}
     end
     {:noreply, [], state}
