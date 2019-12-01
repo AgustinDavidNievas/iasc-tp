@@ -16,4 +16,11 @@ defmodule ConsumerDynamicSupervisor do
     spec = {Consumer, id}
     DynamicSupervisor.start_child(__MODULE__, spec)
   end
+
+  def start_child(id, cola) do
+    #Ejemplo para agregar consumer:
+    #ConsumerDynamicSupervisor.start_child(:uno, cola)
+    spec = {Consumer, {id, cola} }
+    DynamicSupervisor.start_child(__MODULE__, spec)
+  end
 end

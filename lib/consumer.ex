@@ -1,23 +1,18 @@
 defmodule Consumer do
   use GenStage
 
-  def child_spec(id) do
+  def child_spec({id, cola}) do
     name = Module.concat(__MODULE__, id)
-    %{id: name, start: {__MODULE__, :start_link, [name]}, type: :worker}
+    %{id: name, start: {__MODULE__, :start_link, [name, cola]}, type: :worker}
   end
 
-  def start_link do
-    GenStage.start_link(__MODULE__, :ok)
+  def start_link(name, cola) do
+    IO.inspect {"Start Link",name, cola}
+    GenStage.start_link(__MODULE__, cola, name: name)
   end
 
-  def start_link(name) do
-    GenStage.start_link(__MODULE__, :ok, name: name)
-  end
-
-  def init(:ok) do
-    #como ahora la cola es dinamica no puedo usar "subscribe_to: [ColaActiva]" :(
-    #TODO ver si le puedo pasar el subscribe_to aca en el init...
-    {:consumer, []}
+  def init(cola) do
+    {:consumer, [], subscribe_to: [cola]}
   end
 
   def handle_events(events, _from, state) do
