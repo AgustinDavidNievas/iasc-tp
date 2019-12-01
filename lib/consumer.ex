@@ -7,7 +7,6 @@ defmodule Consumer do
   end
 
   def start_link(name, cola) do
-    IO.inspect {"Start Link",name, cola}
     GenStage.start_link(__MODULE__, cola, name: name)
   end
 
