@@ -9,8 +9,8 @@ defmodule Producer do
     { :ok, arg }
   end
 
-  def handle_call({:sync_notify, colaPid, msj, timeout}, _from, state) do
-    sync_notify(colaPid, msj, timeout)
+  def handle_call({:sync_notify, key, msj, timeout}, _from, state) do
+    sync_notify(key, msj, timeout)
     {:reply, :ok, state}
   end
 
