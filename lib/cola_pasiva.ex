@@ -11,14 +11,12 @@ defmodule ColaPasiva do
 
   def insert(msg, deman) do
     Agent.update(__MODULE__, fn {state_queue, _} -> {:queue.in(msg, state_queue), deman} end)
-    IO.puts("state after insert -> ")
-    IO.puts(get_state())
+    get_state()
   end
 
   def remove(msg, deman) do
     Agent.update(__MODULE__, fn {state_queue, _} -> {:queue.from_list(:lists.delete(msg, :queue.to_list(state_queue))), deman} end)
-    IO.puts("state after remove -> ")
-    IO.puts(get_state())
+    get_state()
   end
 
 end
