@@ -1,5 +1,10 @@
-{:ok, colaUnoPid} = ColaActivaDynamicSupervisor.start_child(:uno)
+{:ok, colaUnoPid} = ColaActivaDynamicSupervisor.start_child(:cola_uno)
+{:ok, colaDosPid} = ColaActivaDynamicSupervisor.start_child(:cola_dos)
 {:ok, consumerUnoPid} = ConsumerDynamicSupervisor.start_child(:uno)
 {:ok, consumerDosPid} = ConsumerDynamicSupervisor.start_child(:dos)
 GenStage.sync_subscribe(consumerUnoPid, to: colaUnoPid)
+GenStage.sync_subscribe(consumerUnoPid, to: colaDosPid)
 GenStage.sync_subscribe(consumerDosPid, to: colaUnoPid)
+
+Router.agregar_cola("uno", colaUnoPid)
+Router.agregar_cola("dos", colaDosPid)
