@@ -5,8 +5,8 @@ defmodule Router do
     GenServer.start_link(__MODULE__, :ok, opts)
   end
 
-  def init(:ok) do
-    {:ok, {}}
+  def init(_args) do
+    {:ok, RegistroCola.recover}
   end
 
   def handle_call({:send, key, data}, _from, state) do
