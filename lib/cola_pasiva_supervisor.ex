@@ -11,7 +11,9 @@ defmodule ColaPasivaSupervisor do
 
   @impl true
   def init(_init_arg) do
-    children = [ ColaPasiva ]
+    children = [
+      worker(ColaPasiva, [])
+    ]
 
     Supervisor.init(children, strategy: :one_for_one)
   end
