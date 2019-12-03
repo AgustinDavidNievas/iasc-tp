@@ -1,19 +1,19 @@
 defmodule ColaActiva do
   use GenStage
 
-  def child_spec(id) do
+  def child_spec({id, dispatcher}) do
     name = Module.concat(__MODULE__, id)
-    %{id: name, start: {__MODULE__, :start_link, [name]}, type: :worker}
+    %{id: name, start: {__MODULE__, :start_link, [name, dispatcher]}, type: :worker}
   end
 
-  def start_link(name) do
-    GenStage.start_link(__MODULE__, :ok, name: name)
+  def start_link(name, dispatcher) do
+    GenStage.start_link(__MODULE__, dispatcher, name: name)
   end
 
-  def init(:ok) do
+  def init(dispatcher) do
     #GenStage.DemandDispatcher envia el mensaje a un solo consumer (usando fifo)
     #GenStage.BroadcastDispatcher envisa el mensaje a todos los consumer
-    {:producer, {:queue.new, 0}, dispatcher: GenStage.DemandDispatcher}
+    {:producer, {:queue.new, 0}, dispatcher: dispatcher}
   end
 
   def handle_call({:notify, event}, from, {queue, pending_demand}) do
