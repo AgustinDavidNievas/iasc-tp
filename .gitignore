@@ -9,4 +9,4 @@ iasc_tp-*.tar
 *.beam
 /config/*.secret.exs
 .elixir_ls
-
+.formatter.exs
