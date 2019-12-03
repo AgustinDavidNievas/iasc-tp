@@ -1,5 +1,5 @@
 defmodule ColaPasiva do
-  use Agent
+  use Agent, restart: :transient, shutdown: 10_000
 
   def init(arg) do
     { :ok, arg }
