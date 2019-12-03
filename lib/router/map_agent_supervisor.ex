@@ -1,10 +1,8 @@
-defmodule RegistroColaSupervisor do
+defmodule RouterStateSupervisor do
   use Supervisor
 
-  require Logger
-
   def start_link do
-    Supervisor.start_link(__MODULE__, name: __MODULE__)
+    Supervisor.start_link(__MODULE__, :ok)
   end
 
   def start_link(init_arg) do
@@ -12,15 +10,14 @@ defmodule RegistroColaSupervisor do
   end
 
   def init(_init_arg) do
-    Logger.info("Iniciando supervisor del mapa de colas...")
     children = [
-      worker(RegistroCola, [])
+        {RouterState, []}
     ]
+    IO.inspect "Iniciando supervisor del estado del registry..."
     Supervisor.init(children, strategy: :one_for_one)
   end
 
   def children do
     Supervisor.which_children(__MODULE__)
   end
-
 end

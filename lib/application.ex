@@ -5,9 +5,10 @@ defmodule Iasc_tp.Application do
     import Supervisor.Spec, warn: false
 
     children = [
-      ProducerSupervisor,
+      RouterStateSupervisor,
       RegistroColaSupervisor,
       RouterSupervisor,
+      ProducerSupervisor,
       Endpoint,
       ColaPasivaSupervisor,
       ColaActivaRegSup,
