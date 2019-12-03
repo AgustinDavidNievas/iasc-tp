@@ -10,6 +10,9 @@ defmodule Iasc_tp.Application do
       RouterSupervisor,
       ProducerSupervisor,
       Endpoint,
+      ColaPasivaSupervisor,
+      ColaActivaRegSup,
+      AgentsSupervisor,
       %{id: ColaActivaDynamicSupervisor, start: {ColaActivaDynamicSupervisor, :start_link, [[]]} },
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
     ]
