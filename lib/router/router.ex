@@ -13,8 +13,24 @@ defmodule Router do
     {:reply, status, state}
   end
 
-  def agregar_cola(key, cola_id) do
+  def handle_call({:add, key, pid}, _from, state) do
+    {:reply, add_queue(key, pid), state}
+  end
+
+  def handle_call({:search, key}, _from, state) do
+    {:reply, search_queue(key), state}
+  end
+
+  def search_queue(key) do
+    RegistroCola.get_cola(key)
+  end
+
+  def add_queue(key, cola_id) do
     RegistroCola.registar_cola(key, cola_id)
+  end
+
+  def remove_queue(key) do
+    RegistroCola.unregister_key(key)
   end
 
   defp send_to_queue(data, event, timeout \\ 50000)
