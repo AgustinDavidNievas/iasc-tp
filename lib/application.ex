@@ -6,8 +6,9 @@ defmodule Iasc_tp.Application do
 
     children = [
       RouterStateSupervisor,
-      ProducerSupervisor,
+      RegistroColaSupervisor,
       RouterSupervisor,
+      ProducerSupervisor,
       Endpoint,
       %{id: ColaActivaDynamicSupervisor, start: {ColaActivaDynamicSupervisor, :start_link, [[]]} },
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }
