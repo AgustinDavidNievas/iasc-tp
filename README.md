@@ -29,29 +29,19 @@ dentro de la carpeta config, hacer un search and replace de
 por el nombre del equipo local.
 
 
-
-Copiar a mano el contenido de la carpeta:
-```
-_build\dev\lib\gen_stage\ebin
-```
-
-dentro de la carpeta:
-```
-_build\dev\lib\iasc_tp\ebin
-```
-
 ### comandos para windows
 ```
-iex.bat --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/a"
-iex.bat --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/b"
-iex.bat --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/c"
+iex.bat --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/a" -S mix
+iex.bat --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/b" -S mix
+iex.bat --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/c" -S mix
+
 ```
 
 ### comandos para linux
 ```
-iex --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/a"
-iex --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/b"
-iex --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --app iasc_tp --erl "-config config/c"
+iex --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/a" -S mix
+iex --sname b -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/b" -S mix
+iex --sname c -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/c" -S mix
 ```
 
 Se deben correr los 3 comandos en 3 terminales, en simultaneo, para que la app levante.

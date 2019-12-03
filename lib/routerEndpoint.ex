@@ -20,7 +20,7 @@ defmodule RouterEndpoint do
     #Mensaje a mostrar al cliente en formato JSON
     # TODO: este mensaje tiene cosas harcodeadas, ver si se pueden recibir por el HTTP
     content = {self(), 1,  :calendar.local_time()}
-    GenServer.call({:global, GlobalRouter}, {:send, 3, content}, 5000)
+    Producer.sync_notify("uno", "hello from endpoint")
     Poison.encode!(%{
       response: "IASC_TP - Grupo 6"
     })
