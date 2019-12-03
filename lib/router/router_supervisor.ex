@@ -10,7 +10,6 @@
   @impl true
   def init(_init_arg) do
     children = [
-      worker(RegistroCola, []),
       worker(Router, [[name: {:global, GlobalRouter}]])
     ]
     Logger.info("Iniciando supervisor del router...")
