@@ -5,9 +5,9 @@ defmodule Iasc_tp.Application do
     import Supervisor.Spec, warn: false
 
     children = [
+      RouterStateSupervisor,
       ProducerSupervisor,
       RouterSupervisor,
-      RouterStateSupervisor,
       Endpoint,
       %{id: ColaActivaDynamicSupervisor, start: {ColaActivaDynamicSupervisor, :start_link, [[]]} },
       %{id: ConsumerDynamicSupervisor, start: {ConsumerDynamicSupervisor, :start_link, [[]]} }

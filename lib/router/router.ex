@@ -5,10 +5,6 @@ defmodule Router do
     GenServer.start_link(__MODULE__, :ok, opts)
   end
 
-  def init(_args) do
-    {:ok, RegistroCola.recover}
-  end
-
   def handle_call({:send, key, data}, _from, state) do
     cola = RegistroCola.get_cola(key)
     IO.inspect {"Router: recibi un msj y lo estoy redireccionando", self()}

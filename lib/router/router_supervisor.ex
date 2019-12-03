@@ -10,8 +10,8 @@
   @impl true
   def init(_init_arg) do
     children = [
-      worker(RegistroCola, [], restart: :permanent),
-      worker(Router, [[name: {:global, GlobalRouter}]], restart: :transient)
+      worker(RegistroCola, []),
+      worker(Router, [[name: {:global, GlobalRouter}]])
     ]
     Logger.info("Iniciando supervisor del router...")
     Supervisor.init(children, strategy: :one_for_all)

@@ -1,8 +1,9 @@
 defmodule RegistroCola do
   
   def start_link do
-    IO.inspect "Iniciando Registry"
-    Registry.start_link(keys: :unique, name: __MODULE__, partitions: System.schedulers_online())
+    result = Registry.start_link(keys: :unique, name: __MODULE__, partitions: System.schedulers_online())
+    RegistroCola.recover
+    result
   end
 
   def registar_cola(key, name) do
@@ -20,19 +21,15 @@ defmodule RegistroCola do
   end
 
   def recover do
-    IO.inspect "Recuperando estado..."
+    IO.inspect "Registry: Recuperando estado"
     for {key, value} <- RouterState.values do
-      register_key(key, value)
+      Registry.register(__MODULE__, key, value)    
     end
   end
 
   def get_cola(key) do
     IO.inspect "Seleccionando cola..."
     Registry.lookup(__MODULE__, key)
-  end
-
-  def values do
-    Registry.keys(__MODULE__, self())
   end
 
 end
