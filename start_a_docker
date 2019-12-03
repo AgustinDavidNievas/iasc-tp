@@ -1,0 +1,1 @@
+iex --sname a -pa _build/dev/lib/iasc_tp/ebin/ --cookie cookie --erl "-config config/docker/a-docker" -S mix
