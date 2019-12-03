@@ -14,10 +14,10 @@ defmodule ColaActivaDynamicSupervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
-  def start_child(id, dispatcher) do
+  def start_child(id, dispatcher, pid_cola_pasiva) do
     #Ejemplo para agregar una cola:
     #ColaActivaDynamicSupervisor.start_child(:uno)
-    spec = {ColaActiva, {id, dispatcher} }
+    spec = {ColaActiva, {id, dispatcher, pid_cola_pasiva} }
     DynamicSupervisor.start_child(__MODULE__, spec)
   end
 
