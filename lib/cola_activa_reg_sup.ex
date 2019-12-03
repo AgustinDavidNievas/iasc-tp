@@ -1,4 +1,4 @@
-defmodule RouterSupervisor do
+defmodule ColaActivaRegSup do
   use Supervisor
 
   require Logger
@@ -9,9 +9,8 @@ defmodule RouterSupervisor do
 
   def init(:ok) do
     children = [
-       worker(Router, [[name: {:global, GlobalRouter}]], restart: :transient)
+       worker(ColaActivaReg, [])
     ]
-    Logger.info("Iniciando supervisor del router...")
     Supervisor.init(children, strategy: :one_for_one)
   end
 end

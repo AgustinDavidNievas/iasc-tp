@@ -1,12 +1,14 @@
 defmodule RegistroColaSupervisor do
   use Supervisor
 
+  require Logger
+
   def start_link(_args) do
     Supervisor.start_link(__MODULE__, :ok)
   end
 
   def init(:ok) do
-    IO.puts "Iniciando supervisor del mapa de colas..."    
+    Logger.info("Iniciando supervisor del mapa de colas...")
     children = [
        worker(RegistroCola, [])
     ]
