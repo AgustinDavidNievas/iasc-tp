@@ -7,5 +7,5 @@
 {:ok, consumerDosPid} = ConsumerDynamicSupervisor.start_child(:dos, colaDosPid)
 {:ok, consumerTresPid} = ConsumerDynamicSupervisor.start_child(:tres, colaDosPid)
 
-Router.agregar_cola("uno", colaUnoPid)
-Router.agregar_cola("dos", colaDosPid)
+Router.add_queue("uno", colaUnoPid)
+Router.add_queue("dos", colaDosPid)
